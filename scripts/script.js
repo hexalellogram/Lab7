@@ -8,7 +8,7 @@ const setState = router.setState;
 // handle popstate for history
 
 window.onpopstate = function (event) {
-  setState(event.state);
+  setState(event.state.page, event.state.content);
 };
 
 // set listeners for header text and settings icon
@@ -24,6 +24,7 @@ gear.onclick = function () {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+  router.setState("home");
   fetch("https://cse110lab6.herokuapp.com/entries")
     .then((response) => response.json())
     .then((entries) => {
