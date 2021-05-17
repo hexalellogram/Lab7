@@ -2,46 +2,45 @@
 
 export const router = {};
 
-setPageContent = function(state, content) {
-  let body = document.getElementsByTagName('body')[0];
-  let header = document.querySelector('header > h1');
-
-  if (state == 'home') {
-    // set the information for home
-    body.className = '';
-    header.innerHTML = 'Journal Entries';
-  }
-  else if (state == 'settings') {
-    // set up the information for settings
-    body.className = 'settings';
-    header.innerHTML = 'Settings';
-
-  }
-  else if (state == 'entry') {
-    // set up the information for a single entry
-    body.className = 'single-entry';
-
-    // still need to set up entry content
-  }
-};
-
 /**
  * Changes the "page" (state) that your SPA app is currently set to
  */
 router.setState = function(state, content) {
+  let body = document.getElementsByTagName('body')[0];
+  let header = document.querySelector('header > h1');
+  let main = document.getElementsByTagName.apply('main')[0];
+
   // https://stackoverflow.com/questions/1368264/how-to-extract-the-hostname-portion-of-a-url-in-javascript
   let url = window.location.origin + '/Lab7/';
   if (state == 'home') {
+    // push state to history
     history.pushState({page: 'home'}, 'Lab 7 - Web Components', url + '/#home');
+
+    // set up information for home
+    body.className = '';
+    header.innerHTML = 'Journal Entries';
   }
   else if (state == 'entry') {
+    // push state to history
     history.pushState({page: 'entry'}, 'Entry #' + content.order, url + '/#entry' + content.order);
+
+    // set up the information for a single entry
+    body.className = 'single-entry';
+    header.innerHTML = 'Entry #' + content.order;
+
+    // set up entry content
+    let newEntry = document.createElement('entry-page');
+    newEntry.entry = content;
   }
   else if (state == 'settings') {
+    // push state to history
     history.pushState({page: 'settings'}, 'Settings',url + '/#settings');
+
+    // set up information for settings
+    body.className = 'settings';
+    header.innerHTML = 'Settings';
   }
 
-  setPageContent(state, content);
   /**
    * - There are three states that your SPA app will have
    *    1. The home page
