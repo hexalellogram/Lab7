@@ -10,8 +10,8 @@ var CACHE_NAME = "my-site-cache-v1";
 var urlsToCache = [
   "/",
   "/Lab7/",
-  "/scripts/script.js",
-  "/scripts/router.js",
+  "/Lab7/scripts/script.js",
+  "/Lab7/scripts/router.js",
   "/Lab7/index.html",
   "https://cse110lab6.herokuapp.com/entries",
 ];
