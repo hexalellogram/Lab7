@@ -22,11 +22,11 @@ router.setState = function(state, content) {
   }
   else if (state == 'entry') {
     // push state to history
-    history.pushState({page: 'entry'}, 'Entry #' + content.order, url + '/#entry' + content.order);
+    history.pushState({page: 'entry'}, 'Entry #' + content.num, url + '/#entry' + content.num);
 
     // set up the information for a single entry
     body.className = 'single-entry';
-    header.innerHTML = 'Entry #' + content.order;
+    header.innerHTML = 'Entry #' + content.num;
 
     // set up entry content
     let newEntry = document.createElement('entry-page');
