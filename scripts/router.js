@@ -9,17 +9,19 @@ setPageContent = function(state, content) {
   if (state == 'home') {
     // set the information for home
     body.className = '';
-    header.innerHTML = 'Journal Entries'
+    header.innerHTML = 'Journal Entries';
   }
   else if (state == 'settings') {
     // set up the information for settings
     body.className = 'settings';
+    header.innerHTML = 'Settings';
 
   }
   else if (state == 'entry') {
     // set up the information for a single entry
-    body.className = 'single-entry'
+    body.className = 'single-entry';
 
+    // still need to set up entry content
   }
 };
 
