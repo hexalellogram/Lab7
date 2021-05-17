@@ -26,7 +26,7 @@ router.setState = function(state, content) {
 
     // set up the information for a single entry
     body.className = 'single-entry';
-    header.innerHTML = 'Entry #' + content.num;
+    header.innerHTML = 'Entry ' + content.num;
 
     // set up entry content
     let newEntry = document.createElement('entry-page');
