@@ -5,6 +5,19 @@ const setState = router.setState;
 
 // Make sure you register your service worker here too
 
+// set listeners for header text and settings icon
+
+const headerText = document.querySelector('header > h1');
+headerText.onclick = function() {
+  router.setState('home');
+};
+
+const gear = document.querySelector('header > img');
+gear.onclick = function() {
+  router.setState('settings');
+};
+
+
 document.addEventListener('DOMContentLoaded', () => {
   fetch('https://cse110lab6.herokuapp.com/entries')
     .then(response => response.json())
