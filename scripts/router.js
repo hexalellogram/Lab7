@@ -2,10 +2,44 @@
 
 export const router = {};
 
+setPageContent = function(state, content) {
+  let body = document.getElementsByTagName('body')[0];
+  let header = document.querySelector('header > h1');
+
+  if (state == 'home') {
+    // set the information for home
+    body.className = '';
+    header.innerHTML = 'Journal Entries'
+  }
+  else if (state == 'settings') {
+    // set up the information for settings
+    body.className = 'settings';
+
+  }
+  else if (state == 'entry') {
+    // set up the information for a single entry
+    body.className = 'single-entry'
+
+  }
+};
+
 /**
  * Changes the "page" (state) that your SPA app is currently set to
  */
-router.setState = function() {
+router.setState = function(state, content) {
+  // https://stackoverflow.com/questions/1368264/how-to-extract-the-hostname-portion-of-a-url-in-javascript
+  let url = window.location.origin + '/Lab7/';
+  if (state == 'home') {
+    history.pushState({page: 'home'}, 'Lab 7 - Web Components', url + '/#home');
+  }
+  else if (state == 'entry') {
+    history.pushState({page: 'entry'}, 'Entry #' + content.order, url + '/#entry' + content.order);
+  }
+  else if (state == 'settings') {
+    history.pushState({page: 'settings'}, 'Settings',url + '/#settings');
+  }
+
+  setPageContent(state, content);
   /**
    * - There are three states that your SPA app will have
    *    1. The home page
